@@ -1,2 +1,2 @@
-# budget-tracker
-Application for tracking family budget
+# expense-tracker
+Application for tracking family expenses
