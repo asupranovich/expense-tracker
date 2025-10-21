@@ -29,7 +29,7 @@ public class ExpenseEntity extends BaseEntity {
     private LocalDate payDate;
 
     @ManyToOne
-    @JoinColumn(name = "expense_category_id")
+    @JoinColumn(name = "category_id")
     private CategoryEntity category;
 
     @Column(name = "amount")
@@ -38,8 +38,8 @@ public class ExpenseEntity extends BaseEntity {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "comment")
-    private String comment;
+    @Column(name = "remark")
+    private String remark;
 
     @ManyToOne
     @JoinColumn(name = "household_id")

@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS expense
 (
     id           BIGINT AUTO_INCREMENT NOT NULL COMMENT 'Expense ID',
-    person_id    VARCHAR(255)          NOT NULL COMMENT 'Payer ID',
+    person_id    BIGINT                NOT NULL COMMENT 'Payer ID',
     household_id BIGINT                NOT NULL COMMENT 'Household ID',
     pay_date     DATE                  NOT NULL COMMENT 'Expense date',
     category_id  BIGINT                NOT NULL COMMENT 'Expense category ID',

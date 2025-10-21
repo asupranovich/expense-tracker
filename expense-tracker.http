@@ -1,0 +1,15 @@
+### Get default categories
+GET http://localhost:8080/categories
+Accept: application/json
+
+### Get person by id
+GET http://localhost:8080/person/1
+Accept: application/json
+
+### Get household by id
+GET http://localhost:8080/households/1
+Accept: application/json
+
+### Get expenses
+GET http://localhost:8080/expenses
+Accept: application/json

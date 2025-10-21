@@ -7,3 +7,5 @@ spring:
     password: abc123
   liquibase:
     change-log: classpath:liquibase/db/changelog/changelog.xml
+  jpa:
+    open-in-view: false

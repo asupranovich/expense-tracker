@@ -14,4 +14,5 @@ public class Household {
 
     private List<Person> members;
 
+    private List<Category> categories;
 }

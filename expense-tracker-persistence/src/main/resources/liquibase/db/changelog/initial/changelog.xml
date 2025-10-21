@@ -4,10 +4,17 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
 
-  <changeSet id="create-person-table" author="asupranovich">
-    <sqlFile path="tables/person.sql" relativeToChangelogFile="true"/>
+  <changeSet id="create-category-table" author="asupranovich">
+    <sqlFile path="tables/category.sql" relativeToChangelogFile="true"/>
     <rollback>
-      <sql>DROP TABLE IF EXISTS person</sql>
+      <sql>DROP TABLE IF EXISTS category</sql>
+    </rollback>
+  </changeSet>
+
+  <changeSet id="add-default-categories" author="asupranovich">
+    <sqlFile path="data/default_categories.sql" relativeToChangelogFile="true"/>
+    <rollback>
+      <sql>TRUNCATE category</sql>
     </rollback>
   </changeSet>
 
@@ -18,13 +25,6 @@
     </rollback>
   </changeSet>
 
-  <changeSet id="create-category-table" author="asupranovich">
-    <sqlFile path="tables/category.sql" relativeToChangelogFile="true"/>
-    <rollback>
-      <sql>DROP TABLE IF EXISTS category</sql>
-    </rollback>
-  </changeSet>
-
   <changeSet id="create-household_category-table" author="asupranovich">
     <sqlFile path="tables/household_category.sql" relativeToChangelogFile="true"/>
     <rollback>
@@ -32,17 +32,17 @@
     </rollback>
   </changeSet>
 
+  <changeSet id="create-person-table" author="asupranovich">
+    <sqlFile path="tables/person.sql" relativeToChangelogFile="true"/>
+    <rollback>
+      <sql>DROP TABLE IF EXISTS person</sql>
+    </rollback>
+  </changeSet>
+
   <changeSet id="create-expense-table" author="asupranovich">
     <sqlFile path="tables/expense.sql" relativeToChangelogFile="true"/>
     <rollback>
       <sql>DROP TABLE IF EXISTS expense</sql>
-    </rollback>
-  </changeSet>
-
-  <changeSet id="add-default-categories" author="asupranovich">
-    <sqlFile path="data/default_categories.sql" relativeToChangelogFile="true"/>
-    <rollback>
-      <sql>TRUNCATE category</sql>
     </rollback>
   </changeSet>
 

@@ -20,7 +20,7 @@ public class Expense {
 
     private String description;
 
-    private String comment;
+    private String remark;
 
     private Household household;
 }
