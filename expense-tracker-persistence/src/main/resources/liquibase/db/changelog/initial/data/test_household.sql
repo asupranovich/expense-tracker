@@ -1,0 +1,1 @@
+INSERT INTO household (name) VALUES ('Test');

@@ -5,9 +5,10 @@ import com.asupranovich.expense.tracker.domain.service.persistence.ExpensePersis
 import com.asupranovich.expense.tracker.persistence.entity.ExpenseEntity;
 import com.asupranovich.expense.tracker.persistence.mapper.ExpenseMapper;
 import com.asupranovich.expense.tracker.persistence.repository.ExpenseRepository;
+import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.StreamSupport;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 public class ExpensePersistenceServiceImpl implements ExpensePersistenceService {
@@ -17,10 +18,18 @@ public class ExpensePersistenceServiceImpl implements ExpensePersistenceService 
     private final ExpenseRepository expenseRepository;
 
     @Override
-    public List<Expense> getAll() {
-        Iterable<ExpenseEntity> expenseEntities = expenseRepository.findAll();
-        return StreamSupport.stream(expenseEntities.spliterator(), false)
+    @Transactional(readOnly = true)
+    public List<Expense> getExpenses(Long householdId, LocalDate fromDate, LocalDate toDate) {
+        return expenseRepository.findByHouseholdIdAndPayDateBetweenOrderByPayDateDesc(householdId, fromDate, toDate).stream()
             .map(expenseMapper::toDomain)
             .toList();
+    }
+
+    @Override
+    @Transactional
+    public Expense add(Expense expense) {
+        ExpenseEntity expenseEntity = expenseMapper.toEntity(expense);
+        ExpenseEntity savedExpenseEntity = expenseRepository.save(expenseEntity);
+        return expenseMapper.toDomain(savedExpenseEntity);
     }
 }

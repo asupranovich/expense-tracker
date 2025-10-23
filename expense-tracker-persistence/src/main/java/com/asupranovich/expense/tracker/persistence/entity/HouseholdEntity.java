@@ -31,7 +31,7 @@ public class HouseholdEntity extends BaseEntity {
 
     @ManyToMany
     @JoinTable(
-        name = "household_categories",
+        name = "household_category",
         joinColumns = @JoinColumn(name = "household_id"),
         inverseJoinColumns = @JoinColumn(name = "category_id")
     )

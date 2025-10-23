@@ -46,4 +46,18 @@
     </rollback>
   </changeSet>
 
+  <changeSet id="add-test-household" author="asupranovich">
+    <sqlFile path="data/test_household.sql" relativeToChangelogFile="true"/>
+    <rollback>
+      <sql>TRUNCATE household</sql>
+    </rollback>
+  </changeSet>
+
+  <changeSet id="add-test-person" author="asupranovich">
+    <sqlFile path="data/test_person.sql" relativeToChangelogFile="true"/>
+    <rollback>
+      <sql>TRUNCATE person</sql>
+    </rollback>
+  </changeSet>
+
 </databaseChangeLog>

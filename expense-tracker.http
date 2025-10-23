@@ -11,5 +11,25 @@ GET http://localhost:8080/households/1
 Accept: application/json
 
 ### Get expenses
-GET http://localhost:8080/expenses
+GET http://localhost:8080/expenses?householdId=1
 Accept: application/json
+
+### Add expense
+POST http://localhost:8080/expenses
+Content-Type: application/json
+
+{
+  "payDate": "2025-09-30",
+  "amount": 100.0,
+  "category": {
+    "id": 3
+  },
+  "payer": {
+    "id": 1
+  },
+  "description": "Some expense 3",
+  "remark": "Some remark 3",
+  "household": {
+    "id": 1
+  }
+}

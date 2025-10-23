@@ -6,6 +6,7 @@ import com.asupranovich.expense.tracker.persistence.mapper.HouseholdMapper;
 import com.asupranovich.expense.tracker.persistence.repository.HouseholdRepository;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 public class HouseholdPersistenceServiceImpl implements HouseholdPersistenceService {
@@ -15,6 +16,7 @@ public class HouseholdPersistenceServiceImpl implements HouseholdPersistenceServ
     private final HouseholdRepository householdRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public Optional<Household> findById(Long householdId) {
         return householdRepository.findById(householdId)
             .map(householdMapper::toDomain);

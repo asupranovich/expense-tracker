@@ -8,6 +8,7 @@ import com.asupranovich.expense.tracker.persistence.repository.CategoryRepositor
 import java.util.List;
 import java.util.stream.StreamSupport;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 public class CategoryPersistenceServiceImpl implements CategoryPersistenceService {
@@ -17,6 +18,7 @@ public class CategoryPersistenceServiceImpl implements CategoryPersistenceServic
     private final CategoryRepository categoryRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public List<Category> getAll() {
         Iterable<CategoryEntity> allCategoryEntities = categoryRepository.findAll();
         return StreamSupport.stream(allCategoryEntities.spliterator(), false)

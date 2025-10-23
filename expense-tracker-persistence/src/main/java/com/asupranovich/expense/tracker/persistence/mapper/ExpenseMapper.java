@@ -1,7 +1,10 @@
 package com.asupranovich.expense.tracker.persistence.mapper;
 
 import com.asupranovich.expense.tracker.domain.model.Expense;
+import com.asupranovich.expense.tracker.persistence.entity.CategoryEntity;
 import com.asupranovich.expense.tracker.persistence.entity.ExpenseEntity;
+import com.asupranovich.expense.tracker.persistence.entity.HouseholdEntity;
+import com.asupranovich.expense.tracker.persistence.entity.PersonEntity;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
@@ -25,4 +28,22 @@ public class ExpenseMapper {
             .build();
     }
 
+    public ExpenseEntity toEntity(Expense expense) {
+        return ExpenseEntity.builder()
+            .id(expense.getId())
+            .payDate(expense.getPayDate())
+            .amount(expense.getAmount())
+            .category(CategoryEntity.builder()
+                .id(expense.getCategory().getId())
+                .build())
+            .payer(PersonEntity.builder()
+                .id(expense.getPayer().getId())
+                .build())
+            .description(expense.getDescription())
+            .remark(expense.getRemark())
+            .household(HouseholdEntity.builder()
+                .id(expense.getHousehold().getId())
+                .build())
+            .build();
+    }
 }
