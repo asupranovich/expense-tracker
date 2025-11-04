@@ -8,6 +8,10 @@ public interface ExpensePersistenceService {
 
     List<Expense> getExpenses(Long householdId, LocalDate fromDate, LocalDate toDate);
 
-    Expense add(Expense expense);
+    Expense add(Long householdId, Expense expense);
+
+    Expense edit(Long householdId, Expense expense);
+
+    void delete(Long householdId, Long expenseId);
 
 }

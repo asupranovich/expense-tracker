@@ -5,6 +5,6 @@ import java.util.Optional;
 
 public interface HouseholdService {
 
-    Optional<Household> findById(Long householdId);
+    Household getCurrentHousehold();
 
 }

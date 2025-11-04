@@ -9,3 +9,5 @@ spring:
     change-log: classpath:liquibase/db/changelog/changelog.xml
   jpa:
     open-in-view: false
+jwt:
+  secret-key: my-secret-key-for-jwt-token

@@ -27,8 +27,10 @@ public class PersonEntity extends BaseEntity {
     @Column(name = "email")
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "household_id")
-    private HouseholdEntity household;
+    @Column(name = "password")
+    private String password;
+
+    @Column(name = "household_id")
+    private Long householdId;
 
 }

@@ -1,2 +1,2 @@
-INSERT INTO person(name, email, household_id)
-VALUES ('Test Person', 'test@test.com', (SELECT id FROM household WHERE name = 'Test'))
+INSERT INTO person(name, email, password, household_id)
+VALUES ('Test Person', 'test@test.com', '$2a$12$n8go9mxJ7GvFnIxTUHH8KeUad5E4smUUI1Zohz2R5B9BBiJB3g1lO', (SELECT id FROM household WHERE name = 'Test'))

@@ -41,8 +41,7 @@ public class ExpenseEntity extends BaseEntity {
     @Column(name = "remark")
     private String remark;
 
-    @ManyToOne
-    @JoinColumn(name = "household_id")
-    private HouseholdEntity household;
+    @Column(name = "household_id")
+    private Long householdId;
 
 }

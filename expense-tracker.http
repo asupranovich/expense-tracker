@@ -1,3 +1,12 @@
+### Authenticate
+POST http://localhost:8080/authenticate
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "abc123"
+}
+
 ### Get default categories
 GET http://localhost:8080/categories
 Accept: application/json
@@ -7,28 +16,31 @@ GET http://localhost:8080/person/1
 Accept: application/json
 
 ### Get household by id
-GET http://localhost:8080/households/1
+GET http://localhost:8080/household
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZXMiOiJVU0VSIiwicGVyc29uSWQiOjEsImhvdXNlaG9sZElkIjoxLCJpYXQiOjE3NjE4MjE5MjcsImV4cCI6MTc2MTg1NzkyN30.8WWmTj6l_u2JJHvaDBGmy-hiNQscLFvPAa7CtXknWKA
 
 ### Get expenses
-GET http://localhost:8080/expenses?householdId=1
+GET http://localhost:8080/expenses?date=2025-09-20
 Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZXMiOiJVU0VSIiwicGVyc29uSWQiOjEsImhvdXNlaG9sZElkIjoxLCJpYXQiOjE3NjE2NTU5MTIsImV4cCI6MTc2MTY5MTkxMn0.CJNs5LsOGRhy_GNj-HOJqLy-AZMSXh5rV4Vy-VDhVNA
 
 ### Add expense
 POST http://localhost:8080/expenses
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZXMiOiJVU0VSIiwicGVyc29uSWQiOjEsImhvdXNlaG9sZElkIjoxLCJpYXQiOjE3NjE4MjE5MjcsImV4cCI6MTc2MTg1NzkyN30.8WWmTj6l_u2JJHvaDBGmy-hiNQscLFvPAa7CtXknWKA
 
 {
-  "payDate": "2025-09-30",
-  "amount": 100.0,
+  "payDate": "2025-10-27",
+  "amount": 110.0,
   "category": {
-    "id": 3
+    "id": 1
   },
   "payer": {
     "id": 1
   },
-  "description": "Some expense 3",
-  "remark": "Some remark 3",
+  "description": "Some expense 2",
+  "remark": "Some remark 2",
   "household": {
     "id": 1
   }

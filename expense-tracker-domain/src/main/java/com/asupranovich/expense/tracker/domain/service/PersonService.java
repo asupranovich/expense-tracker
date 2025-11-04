@@ -7,4 +7,6 @@ public interface PersonService {
 
     Optional<Person> findById(Long id);
 
+    Optional<Person> findByEmail(String email);
+
 }

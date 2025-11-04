@@ -43,8 +43,8 @@ public class ExpenseTrackerPersistenceConfiguration {
     }
 
     @Bean
-    public ExpenseMapper expenseMapper(CategoryMapper categoryMapper, PersonMapper personMapper, HouseholdMapper householdMapper) {
-        return new ExpenseMapper(categoryMapper, personMapper, householdMapper);
+    public ExpenseMapper expenseMapper(CategoryMapper categoryMapper, PersonMapper personMapper) {
+        return new ExpenseMapper(categoryMapper, personMapper);
     }
 
     @Bean

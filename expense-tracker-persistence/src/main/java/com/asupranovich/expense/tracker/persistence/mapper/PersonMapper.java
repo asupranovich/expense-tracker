@@ -10,6 +10,16 @@ public class PersonMapper {
             .id(personEntity.getId())
             .name(personEntity.getName())
             .email(personEntity.getEmail())
+            .householdId(personEntity.getHouseholdId())
+            .build();
+    }
+
+    public PersonEntity toEntity(Person person) {
+        return PersonEntity.builder()
+            .id(person.getId())
+            .name(person.getName())
+            .email(person.getEmail())
+            .householdId(person.getHouseholdId())
             .build();
     }
 

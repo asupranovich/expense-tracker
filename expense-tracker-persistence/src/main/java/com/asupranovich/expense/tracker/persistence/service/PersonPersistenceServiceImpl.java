@@ -1,6 +1,7 @@
 package com.asupranovich.expense.tracker.persistence.service;
 
 import com.asupranovich.expense.tracker.domain.model.Person;
+import com.asupranovich.expense.tracker.domain.model.PersonCredentials;
 import com.asupranovich.expense.tracker.domain.service.persistence.PersonPersistenceService;
 import com.asupranovich.expense.tracker.persistence.mapper.PersonMapper;
 import com.asupranovich.expense.tracker.persistence.repository.PersonRepository;
@@ -21,5 +22,18 @@ public class PersonPersistenceServiceImpl implements PersonPersistenceService {
     public Optional<Person> findById(@NonNull Long id) {
         return personRepository.findById(id)
             .map(personMapper::toDomain);
+    }
+
+    @Override
+    public Optional<Person> findByEmail(String email) {
+        return personRepository.findByEmail(email)
+            .map(personMapper::toDomain);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Optional<PersonCredentials> findCredentialsByEmail(@NonNull String email) {
+        return personRepository.findByEmail(email)
+            .map(entity -> PersonCredentials.of(entity.getEmail(), entity.getPassword()));
     }
 }

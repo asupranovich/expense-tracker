@@ -6,8 +6,11 @@ import java.util.List;
 
 public interface ExpenseService {
 
-    List<Expense> getMonthExpenses(Long householdId, LocalDate date);
+    List<Expense> getMonthExpenses(LocalDate date);
 
     Expense add(Expense expense);
 
+    Expense edit(Expense expense);
+
+    void delete(Long id);
 }

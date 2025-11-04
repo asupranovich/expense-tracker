@@ -26,7 +26,8 @@ public class HouseholdEntity extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "household")
+    @OneToMany
+    @JoinColumn(name = "household_id")
     private List<PersonEntity> members;
 
     @ManyToMany

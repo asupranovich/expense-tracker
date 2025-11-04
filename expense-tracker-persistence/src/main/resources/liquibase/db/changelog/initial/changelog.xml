@@ -53,6 +53,13 @@
     </rollback>
   </changeSet>
 
+  <changeSet id="add-test-household-categories" author="asupranovich">
+    <sqlFile path="data/test_household_categories.sql" relativeToChangelogFile="true"/>
+    <rollback>
+      <sql>TRUNCATE household_category</sql>
+    </rollback>
+  </changeSet>
+
   <changeSet id="add-test-person" author="asupranovich">
     <sqlFile path="data/test_person.sql" relativeToChangelogFile="true"/>
     <rollback>
