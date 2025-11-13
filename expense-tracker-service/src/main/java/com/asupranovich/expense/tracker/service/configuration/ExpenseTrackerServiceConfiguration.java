@@ -1,6 +1,5 @@
 package com.asupranovich.expense.tracker.service.configuration;
 
-import com.asupranovich.expense.tracker.domain.service.AuthenticationService;
 import com.asupranovich.expense.tracker.domain.service.CategoryService;
 import com.asupranovich.expense.tracker.domain.service.ExpenseService;
 import com.asupranovich.expense.tracker.domain.service.HouseholdService;
@@ -9,7 +8,6 @@ import com.asupranovich.expense.tracker.domain.service.persistence.CategoryPersi
 import com.asupranovich.expense.tracker.domain.service.persistence.ExpensePersistenceService;
 import com.asupranovich.expense.tracker.domain.service.persistence.HouseholdPersistenceService;
 import com.asupranovich.expense.tracker.domain.service.persistence.PersonPersistenceService;
-import com.asupranovich.expense.tracker.service.impl.AuthenticationServiceImpl;
 import com.asupranovich.expense.tracker.service.impl.CategoryServiceImpl;
 import com.asupranovich.expense.tracker.service.impl.ExpenseServiceImpl;
 import com.asupranovich.expense.tracker.service.impl.HouseholdServiceImpl;
@@ -24,18 +22,26 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class ExpenseTrackerServiceConfiguration {
 
     @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder(12);
+    }
+
+    @Bean
     public CurrentPersonDetailsProvider personDetailsProvider() {
         return new CurrentPersonDetailsProvider();
     }
 
     @Bean
-    public CategoryService categoryService(CategoryPersistenceService categoryPersistenceService) {
-        return new CategoryServiceImpl(categoryPersistenceService);
+    public CategoryService categoryService(CurrentPersonDetailsProvider personDetailsProvider,
+        CategoryPersistenceService categoryPersistenceService) {
+        return new CategoryServiceImpl(personDetailsProvider, categoryPersistenceService);
     }
 
     @Bean
-    public PersonService personService(PersonPersistenceService personPersistenceService) {
-        return new PersonServiceImpl(personPersistenceService);
+    public PersonService personService(PasswordEncoder passwordEncoder, CurrentPersonDetailsProvider personDetailsProvider,
+        HouseholdPersistenceService householdPersistenceService,
+        PersonPersistenceService personPersistenceService) {
+        return new PersonServiceImpl(passwordEncoder, personDetailsProvider, householdPersistenceService, personPersistenceService);
     }
 
     @Bean
@@ -47,16 +53,6 @@ public class ExpenseTrackerServiceConfiguration {
     @Bean
     public ExpenseService expenseService(CurrentPersonDetailsProvider personDetailsProvider, ExpensePersistenceService expensePersistenceService) {
         return new ExpenseServiceImpl(personDetailsProvider, expensePersistenceService);
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(12);
-    }
-
-    @Bean
-    public AuthenticationService authenticationService(PasswordEncoder passwordEncoder, PersonPersistenceService personPersistenceService) {
-        return new AuthenticationServiceImpl(passwordEncoder, personPersistenceService);
     }
 
 }

@@ -9,7 +9,7 @@ public class CategoryMapper {
         return Category.builder()
             .id(entity.getId())
             .name(entity.getName())
-            .isDefault(entity.isDefault())
+            .isDefault(entity.getHouseholdId() == null)
             .build();
     }
 
@@ -17,7 +17,6 @@ public class CategoryMapper {
         return CategoryEntity.builder()
             .id(category.getId())
             .name(category.getName())
-            .isDefault(category.isDefault())
             .build();
     }
 

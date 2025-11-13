@@ -5,6 +5,11 @@ import java.util.List;
 
 public interface CategoryService {
 
-    List<Category> getDefaultCategories();
+    Category add(Category category);
 
+    Category edit(Category category);
+
+    void delete(Long id);
+
+    List<Category> getAvailable();
 }

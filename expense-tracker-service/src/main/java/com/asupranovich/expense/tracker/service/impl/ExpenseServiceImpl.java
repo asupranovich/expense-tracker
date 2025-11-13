@@ -18,11 +18,9 @@ public class ExpenseServiceImpl implements ExpenseService {
     private final ExpensePersistenceService expensePersistenceService;
 
     @Override
-    public List<Expense> getMonthExpenses(LocalDate date) {
+    public List<Expense> getMonthExpenses(int month, int year) {
         Long householdId = personDetailsProvider.getCurrentHouseholdId();
-        LocalDate fromDate = Optional.ofNullable(date)
-            .orElseGet(LocalDate::now)
-            .withDayOfMonth(1);
+        LocalDate fromDate = LocalDate.of(year, month, 1);
         LocalDate toDate = fromDate.plusMonths(1).minusDays(1);
         return expensePersistenceService.getExpenses(householdId, fromDate, toDate);
     }

@@ -4,7 +4,6 @@ import com.asupranovich.expense.tracker.domain.model.Expense;
 import com.asupranovich.expense.tracker.domain.service.ExpenseService;
 import jakarta.validation.Valid;
 import java.net.URI;
-import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -26,8 +25,8 @@ public class ExpenseController {
     private final ExpenseService expenseService;
 
     @GetMapping
-    public ResponseEntity<List<Expense>> getMonthExpenses(@RequestParam(name = "date", required = false) LocalDate date) {
-        return ResponseEntity.ok(expenseService.getMonthExpenses(date));
+    public ResponseEntity<List<Expense>> getMonthExpenses(@RequestParam(name = "month") int month, @RequestParam(name = "year") int year) {
+        return ResponseEntity.ok(expenseService.getMonthExpenses(month, year));
     }
 
     @PostMapping

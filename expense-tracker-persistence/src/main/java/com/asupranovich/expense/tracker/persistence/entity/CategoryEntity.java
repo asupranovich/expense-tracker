@@ -21,7 +21,10 @@ public class CategoryEntity extends BaseEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "is_default")
-    private boolean isDefault;
+    @Column(name = "household_id")
+    private Long householdId;
+
+    @Column(name = "is_deleted")
+    private boolean isDeleted;
 
 }

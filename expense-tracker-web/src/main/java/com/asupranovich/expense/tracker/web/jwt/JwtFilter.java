@@ -58,8 +58,9 @@ public class JwtFilter extends OncePerRequestFilter {
     }
 
     private Person getPerson(Claims tokenClaims) {
-        return Optional.ofNullable(tokenClaims.getSubject())
-            .flatMap(personService::findByEmail)
+        //TODO: move to jwtHelper?
+        return Optional.ofNullable(tokenClaims.get("personId", Long.class))
+            .flatMap(personService::findById)
             .orElseThrow();
     }
 }

@@ -8,8 +8,40 @@ Content-Type: application/json
 }
 
 ### Get default categories
-GET http://localhost:8080/categories
+GET http://localhost:8080/public/categories
 Accept: application/json
+
+### Get household categories
+GET http://localhost:8080/categories
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZXMiOiJVU0VSIiwicGVyc29uSWQiOjEsImhvdXNlaG9sZElkIjoxLCJpYXQiOjE3NjI1MzA0MDgsImV4cCI6MTc2MjU2NjQwOH0.cHZ5J8GQH-A8LrQafgdSBDxDlkrkJKl3s7NdJfagBRg
+
+### Update household categories
+PUT http://localhost:8080/categories/8
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZXMiOiJVU0VSIiwicGVyc29uSWQiOjEsImhvdXNlaG9sZElkIjoxLCJpYXQiOjE3NjI1MzA0MDgsImV4cCI6MTc2MjU2NjQwOH0.cHZ5J8GQH-A8LrQafgdSBDxDlkrkJKl3s7NdJfagBRg
+
+{
+  "name": "Test Category Updated"
+}
+
+### Delete household categories
+DELETE http://localhost:8080/categories/8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZXMiOiJVU0VSIiwicGVyc29uSWQiOjEsImhvdXNlaG9sZElkIjoxLCJpYXQiOjE3NjI1MzA0MDgsImV4cCI6MTc2MjU2NjQwOH0.cHZ5J8GQH-A8LrQafgdSBDxDlkrkJKl3s7NdJfagBRg
+
+
+
+### Create household category
+POST http://localhost:8080/categories
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZXMiOiJVU0VSIiwicGVyc29uSWQiOjEsImhvdXNlaG9sZElkIjoxLCJpYXQiOjE3NjI1MzA0MDgsImV4cCI6MTc2MjU2NjQwOH0.cHZ5J8GQH-A8LrQafgdSBDxDlkrkJKl3s7NdJfagBRg
+
+{
+  "name": "Test Category"
+}
+
+
 
 ### Get person by id
 GET http://localhost:8080/person/1
@@ -28,7 +60,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZ
 ### Add expense
 POST http://localhost:8080/expenses
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZXMiOiJVU0VSIiwicGVyc29uSWQiOjEsImhvdXNlaG9sZElkIjoxLCJpYXQiOjE3NjE4MjE5MjcsImV4cCI6MTc2MTg1NzkyN30.8WWmTj6l_u2JJHvaDBGmy-hiNQscLFvPAa7CtXknWKA
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZXMiOiJVU0VSIiwicGVyc29uSWQiOjEsImhvdXNlaG9sZElkIjoxLCJpYXQiOjE3NjI1MzA0MDgsImV4cCI6MTc2MjU2NjQwOH0.cHZ5J8GQH-A8LrQafgdSBDxDlkrkJKl3s7NdJfagBRg
 
 {
   "payDate": "2025-10-27",

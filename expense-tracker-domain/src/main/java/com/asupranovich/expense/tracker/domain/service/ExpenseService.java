@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface ExpenseService {
 
-    List<Expense> getMonthExpenses(LocalDate date);
+    List<Expense> getMonthExpenses(int month, int year);
 
     Expense add(Expense expense);
 

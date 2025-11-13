@@ -1,9 +1,9 @@
-INSERT INTO category (name, is_default)
+INSERT INTO category (name)
 VALUES
-    ('Transportation', true),
-    ('Childcare & Education', true),
-    ('Food & Groceries', true),
-    ('Health & Medical', true),
-    ('Clothing & Personal Care', true),
-    ('Entertainment', true),
-    ('Housing & Utilities', true);
+    ('Transportation'),
+    ('Childcare & Education'),
+    ('Food & Groceries'),
+    ('Health & Medical'),
+    ('Clothing & Personal Care'),
+    ('Entertainment'),
+    ('Housing & Utilities');

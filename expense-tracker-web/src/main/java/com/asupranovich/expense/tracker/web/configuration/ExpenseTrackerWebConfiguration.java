@@ -1,6 +1,5 @@
 package com.asupranovich.expense.tracker.web.configuration;
 
-import com.asupranovich.expense.tracker.domain.service.AuthenticationService;
 import com.asupranovich.expense.tracker.domain.service.CategoryService;
 import com.asupranovich.expense.tracker.domain.service.ExpenseService;
 import com.asupranovich.expense.tracker.domain.service.HouseholdService;
@@ -26,8 +25,8 @@ public class ExpenseTrackerWebConfiguration implements WebMvcConfigurer {
     }
 
     @Bean
-    public AuthenticationController authenticationController(JwtHelper jwtHelper, AuthenticationService authenticationService) {
-        return new AuthenticationController(jwtHelper, authenticationService);
+    public AuthenticationController authenticationController(JwtHelper jwtHelper, PersonService personService) {
+        return new AuthenticationController(jwtHelper, personService);
     }
 
     @Bean

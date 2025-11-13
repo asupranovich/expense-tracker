@@ -30,15 +30,6 @@ public class JwtHelper {
             .compact();
     }
 
-    public String getPersonEmail(String token) {
-        return Jwts.parser()
-            .verifyWith(getSigningKey())
-            .build()
-            .parseSignedClaims(token)
-            .getPayload()
-            .getSubject();
-    }
-
     public Claims getTokenClaims(String token) {
         return Jwts.parser()
             .verifyWith(getSigningKey())
@@ -49,7 +40,6 @@ public class JwtHelper {
 
     private SecretKey getSigningKey() {
         try {
-            // Hash the secret key to ensure it's at least 256 bits (32 bytes) for HS256
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
             byte[] hash = digest.digest(secretKey.getBytes(StandardCharsets.UTF_8));
             return Keys.hmacShaKeyFor(hash);

@@ -10,6 +10,7 @@ public class PersonMapper {
             .id(personEntity.getId())
             .name(personEntity.getName())
             .email(personEntity.getEmail())
+            .password(personEntity.getPassword())
             .householdId(personEntity.getHouseholdId())
             .build();
     }
@@ -19,6 +20,7 @@ public class PersonMapper {
             .id(person.getId())
             .name(person.getName())
             .email(person.getEmail())
+            .password(person.getPassword())
             .householdId(person.getHouseholdId())
             .build();
     }

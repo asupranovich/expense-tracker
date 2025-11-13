@@ -58,8 +58,9 @@ public class ExpenseTrackerPersistenceConfiguration {
     }
 
     @Bean
-    public HouseholdPersistenceService householdPersistenceService(HouseholdMapper householdMapper, HouseholdRepository householdRepository) {
-        return new HouseholdPersistenceServiceImpl(householdMapper, householdRepository);
+    public HouseholdPersistenceService householdPersistenceService(HouseholdMapper householdMapper, CategoryRepository categoryRepository,
+        HouseholdRepository householdRepository) {
+        return new HouseholdPersistenceServiceImpl(householdMapper, categoryRepository, householdRepository);
     }
 
     @Bean
