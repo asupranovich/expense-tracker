@@ -3,13 +3,9 @@ POST http://localhost:8080/authenticate
 Content-Type: application/json
 
 {
-  "email": "test@test.com",
+  "email": "sasha@test.com",
   "password": "abc123"
 }
-
-### Get default categories
-GET http://localhost:8080/public/categories
-Accept: application/json
 
 ### Get household categories
 GET http://localhost:8080/categories
